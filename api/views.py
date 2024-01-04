@@ -6,7 +6,7 @@ from .serializers import TaskSerializer
 
 @api_view(["GET"])
 def listTask(request):
-    tasks = Tasks.objects.all()
+    tasks = Tasks.objects.all().order_by("-id")
     serializer = TaskSerializer(instance=tasks, many=True)
     return Response(serializer.data)
 
